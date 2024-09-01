@@ -16,3 +16,5 @@ logging:
 spring:
   thymeleaf:
     cache: false
+  resources:
+    static-locations: classpath:/public/,classpath:/static/

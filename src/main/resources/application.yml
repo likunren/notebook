@@ -1,4 +1,18 @@
+##service poty und projectname
 server:
   port: 8081
   servlet:
     context-path: /notebook
+##log notieren
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger- %msg%n"
+    level: error
+  file:
+    path: "./notelog"
+    name: "./notelog/notebook.log"
+    max-history: 10
+##config front view
+spring:
+  thymeleaf:
+    cache: false

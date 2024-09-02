@@ -18,3 +18,19 @@ spring:
     cache: false
   resources:
     static-locations: classpath:/public/,classpath:/static/
+##c3p0数据库配置
+  datasource:
+    c3p0:
+      driverClass: com.mysql.cj.jdbc.Driver
+      jdbcUrl: jdbc:mysql://localhost:3306/cloud_note?useUnicode=true&characterEncoding=utf8& serverTimezone=UTC
+      user: root
+      password:
+      initialPoolSize: 1
+      maxPoolSize: 2
+      minPoolSize: 1
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.proberen.www.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    database-id: datasource

@@ -1,4 +1,4 @@
-package com.proberen.www;
+package com.proberen.www.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,6 +15,8 @@ import javax.sql.DataSource;
 @MapperScan("com.proberen.www.dao")
 public class C3p0DBConfig {
     @Bean(name="dataSource")
+    @Qualifier("dataSource")
+    @Primary
     @ConfigurationProperties(prefix="spring.datasorucde.c3p0")
     public DataSource dataSource(){
        // ComboPooledDataSource dataSource=new ComboPooledDataSource();

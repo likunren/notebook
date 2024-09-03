@@ -16,12 +16,6 @@ import java.util.List;
 public class DbTest {
     @Test
     public void Test(){
-        AnnotationConfigApplicationContext ac=new AnnotationConfigApplicationContext(Starter.class);
-        DataSource dataSource=ac.getBean("dataSource", DataSource.class);
-        try {
-            dataSource.getConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
     }
 }

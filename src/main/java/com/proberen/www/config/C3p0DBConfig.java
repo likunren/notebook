@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
+@Configuration
 public class C3p0DBConfig {
-    @Bean(name="dataSource")
-    @ConfigurationProperties(prefix="spring.datasorucde.c3p0")
+    @ConfigurationProperties(prefix="spring.datasource")
+    @Bean
     public DataSource dataSource(){
+        //return  new ComboPooledDataSource();
         return DataSourceBuilder.create().type(ComboPooledDataSource.class).build();
 
     }

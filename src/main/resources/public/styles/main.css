@@ -4393,7 +4393,7 @@ div.tagsinput div {
 }
 
 .ms-container {
-	background: transparent url(../../public/scripts/images/a4d7e44b.switch.png) no-repeat 170px 80px
+	background: transparent url(../images/a4d7e44b.switch.png) no-repeat 170px 80px
 }
 
 .ms-container:after {
@@ -4738,7 +4738,7 @@ div.tagsinput div {
 }
 
 .select2-search input.select2-active {
-	background: #ecf0f1 url(../../public/scripts/images/08f8695d.select2-spinner.gif) no-repeat 100%
+	background: #ecf0f1 url(../images/08f8695d.select2-spinner.gif) no-repeat 100%
 }
 
 .select2-container-active .select2-choice,.select2-container-active .select2-choices {
@@ -4872,7 +4872,7 @@ div.tagsinput div {
 }
 
 .select2-more-results.select2-active {
-	background: #ecf0f1 url(../../public/scripts/images/08f8695d.select2-spinner.gif) no-repeat 100%
+	background: #ecf0f1 url(../images/08f8695d.select2-spinner.gif) no-repeat 100%
 }
 
 .select2-more-results {
@@ -4959,7 +4959,7 @@ div.tagsinput div {
 }
 
 .select2-container-multi .select2-choices .select2-search-field input.select2-active {
-	background: #fff url(../../public/scripts/images/08f8695d.select2-spinner.gif) no-repeat 100%!important
+	background: #fff url(../images/08f8695d.select2-spinner.gif) no-repeat 100%!important
 }
 
 .select2-default {
@@ -6163,7 +6163,7 @@ div.tagsinput div {
 .minicolors-swatch {
 	position: absolute;
 	vertical-align: middle;
-	background: url(../../public/scripts/images/85509794.jquery.minicolors.png) -80px 0;
+	background: url(../images/85509794.jquery.minicolors.png) -80px 0;
 	border: solid 1px #E0E4E8;
 	cursor: text;
 	padding: 0;
@@ -6227,7 +6227,7 @@ div.tagsinput div {
 	left: 1px;
 	width: 150px;
 	height: 150px;
-	background: url(../../public/scripts/images/85509794.jquery.minicolors.png) -120px 0;
+	background: url(../images/85509794.jquery.minicolors.png) -120px 0;
 	cursor: crosshair
 }
 
@@ -6245,7 +6245,7 @@ div.tagsinput div {
 }
 
 .minicolors-slider-saturation .minicolors-grid-inner {
-	background: url(../../public/scripts/images/85509794.jquery.minicolors.png) -270px 0
+	background: url(../images/85509794.jquery.minicolors.png) -270px 0
 }
 
 .minicolors-slider-brightness .minicolors-grid {
@@ -6266,7 +6266,7 @@ div.tagsinput div {
 	left: 152px;
 	width: 20px;
 	height: 150px;
-	background: #fff url(../../public/scripts/images/85509794.jquery.minicolors.png) 0 0;
+	background: #fff url(../images/85509794.jquery.minicolors.png) 0 0;
 	cursor: row-resize
 }
 
@@ -6889,7 +6889,7 @@ div.tagsinput div {
 	-webkit-transition: opacity .3s ease-in-out;
 	-ms-transition: opacity .3s ease-in-out;
 	transition: opacity .3s ease-in-out;
-	background-image: url(../../public/scripts/images/156cc09f.spritemap.png);
+	background-image: url(../images/156cc09f.spritemap.png);
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	position: absolute;
@@ -6903,7 +6903,7 @@ div.tagsinput div {
 
 @media all and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5/1),(min-device-pixel-ratio:1.5),(min-resolution:138dpi),(min-resolution:1.5dppx) {
 	.dropzone .dz-default.dz-message {
-		background-image: url(../../public/scripts/images/f5c1e285.spritemap@2x.png);
+		background-image: url(../images/f5c1e285.spritemap@2x.png);
 		background-size: 428px 406px
 	}
 }
@@ -6975,13 +6975,13 @@ div.tagsinput div {
 	-webkit-transition: opacity .4s ease-in-out;
 	-ms-transition: opacity .4s ease-in-out;
 	transition: opacity .4s ease-in-out;
-	background-image: url(../../public/scripts/images/156cc09f.spritemap.png);
+	background-image: url(../images/156cc09f.spritemap.png);
 	background-repeat: no-repeat
 }
 
 @media all and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5/1),(min-device-pixel-ratio:1.5),(min-resolution:138dpi),(min-resolution:1.5dppx) {
 	.dropzone .dz-preview .dz-error-mark,.dropzone-previews .dz-preview .dz-error-mark,.dropzone .dz-preview .dz-success-mark,.dropzone-previews .dz-preview .dz-success-mark {
-		background-image: url(../../public/scripts/images/f5c1e285.spritemap@2x.png);
+		background-image: url(../images/f5c1e285.spritemap@2x.png);
 		background-size: 428px 406px
 	}
 }
@@ -7011,14 +7011,14 @@ div.tagsinput div {
 	left: 0;
 	width: 0;
 	height: 100%;
-	background-image: url(../../public/scripts/images/156cc09f.spritemap.png);
+	background-image: url(../images/156cc09f.spritemap.png);
 	background-repeat: repeat-x;
 	background-position: 0 -400px
 }
 
 @media all and (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:1.5/1),(min-device-pixel-ratio:1.5),(min-resolution:138dpi),(min-resolution:1.5dppx) {
 	.dropzone .dz-preview .dz-progress .dz-upload,.dropzone-previews .dz-preview .dz-progress .dz-upload {
-		background-image: url(../../public/scripts/images/f5c1e285.spritemap@2x.png);
+		background-image: url(../images/f5c1e285.spritemap@2x.png);
 		background-size: 428px 406px
 	}
 }
@@ -9826,7 +9826,7 @@ footer p {
 	position: absolute;
 	padding: 0 3px;
 	background-color: transparent;
-	background-image: url(../../public/scripts/images/314be2a9.divider.png);
+	background-image: url(../images/314be2a9.divider.png);
 	background-position: 50% 50%;
 	background-repeat: no-repeat no-repeat;
 	display: block;
@@ -10810,7 +10810,7 @@ td.demo-graph .demo-graph-caption,td.demo-flot .demo-flot-caption {
 	padding: 0;
 	width: 100%;
 	height: 675px;
-	background: url(../../public/scripts/images/dummy/0ab5f292.header-background.jpg) no-repeat center center fixed;
+	background: url(../images/dummy/0ab5f292.header-background.jpg) no-repeat center center fixed;
 	background-size: cover
 }
 

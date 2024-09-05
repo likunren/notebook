@@ -29,6 +29,12 @@ spring:
     minPoolSize: 1
     maxPoolSize: 2
     MaxIdleTime: 3000
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      poll-interval: 3000
+      quiet-period: 1000
 
 mybatis:
   mapper-locations: classpath:/mappers/CnUserMappper.xml

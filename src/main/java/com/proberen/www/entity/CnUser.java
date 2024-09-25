@@ -1,6 +1,8 @@
 package com.proberen.www.entity;
 
-public class CnUser {
+import java.io.Serializable;
+
+public class CnUser implements Serializable {
     private String cnUserId;
     private String cnUserName;
     private String cnUserPassword;

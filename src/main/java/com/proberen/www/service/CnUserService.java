@@ -1,9 +1,8 @@
 package com.proberen.www.service;
 
 import com.proberen.www.entity.CnUser;
-
-import java.util.List;
+import com.proberen.www.util.ResultData;
 
 public interface CnUserService {
-    public List<CnUser> findAllUser();
+    public ResultData<CnUser> findByUser(String userName,String passWord);
 }

@@ -3,8 +3,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>cloudnote</title>
-	<script type="text/javascript" src="../scripts/common/jquery.min.js"></script>
-	<link rel="stylesheet" href="../styles/login.css"/>
+	<script type="text/javascript" src="scripts/common/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/common/gl.js"></script>
+	<script type="text/javascript" src="login.js"></script>
+	<link rel="stylesheet" href="styles/login.css"/>
 </head>
 	<body>
 		<div class="global">
@@ -15,22 +17,26 @@
 							<h3>Login</h3>
 						</div>
 					</dt>
-					<dt></dt>
 					<dt>
 						<div class='letter'>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							User:&nbsp;<input type="text" name="" id="count" tabindex='1'/>
+							User:&nbsp;<input type="text" name="" id="userName" tabindex='1'/>
 						</div>
 					</dt>
 					<dt>
 						<div class='letter'>
-							Passwort:&nbsp;<input type="password" name="" id="password" tabindex='2'/>
+							Passwort:&nbsp;<input type="password" name="" id="passWord" tabindex='2'/>
 						</div>
 					</dt>
 					<dt>
 						<div>
 							<input type="button" name="" id="login" value='&nbsp;Login&nbsp;' tabindex='3'/>
 							<input type="button" name="" id="sig_in" value='Registrieren' tabindex='4'/>
+						</div>
+					</dt>
+					<dt >
+						<div class='letter' style="height:10px">
+							<span id="errorMsg"style="color:#ff0000;"></span>
 						</div>
 					</dt>
 				</dl>

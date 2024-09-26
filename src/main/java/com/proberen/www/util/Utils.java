@@ -5,7 +5,7 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.UUID;
 
-public class Util {
+public class Utils {
     public static String get_UUID(){
         UUID uuid=UUID.randomUUID();
         return uuid.toString().toUpperCase().replaceAll("-","");

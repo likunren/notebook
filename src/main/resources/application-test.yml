@@ -17,7 +17,7 @@ spring:
   thymeleaf:
     cache: false
   resources:
-    static-locations: classpath:/public/,classpath:/static/
+    static-locations: classpath:/public/,classpath:/static/,classpath:/templates/
 ##c3p0数据库配置
   datasource:
     type: com.mchange.v2.c3p0.ComboPooledDataSource

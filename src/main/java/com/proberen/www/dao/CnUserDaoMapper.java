@@ -2,9 +2,9 @@ package com.proberen.www.dao;
 
 import com.proberen.www.entity.CnUser;
 import org.springframework.stereotype.Repository;
-import java.util.List;
+import java.util.Map;
 
 @Repository("cnUserDao")
 public interface CnUserDaoMapper {
-    public List<CnUser> findAll();
+    public CnUser findByName(Map<String,String> userParams);
 }

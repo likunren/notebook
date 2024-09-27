@@ -1,16 +1,16 @@
 package com.proberen.www.util;
 
 public class ResultData<T> {
-    private int staticCode;
+    private int statusCode;
     private String msg;
     private T objectData;
 
-    public int getStaticCode() {
-        return staticCode;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setStaticCode(int staticCode) {
-        this.staticCode = staticCode;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getMsg() {

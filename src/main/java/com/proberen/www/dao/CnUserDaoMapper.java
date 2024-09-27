@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Repository("cnUserDao")
 public interface CnUserDaoMapper {
-    public CnUser findByName(Map<String,String> userParams);
+    public CnUser findByName(String userParams);
 }

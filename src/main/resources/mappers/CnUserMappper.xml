@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.apache.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.proberen.www.dao.CnUserDaoMapper">
-    <select id="findByName" parameterType="map" resultType="com.proberen.www.entity.CnUser">
+    <select id="findByName" parameterType="string" resultType="com.proberen.www.entity.CnUser">
         SELECT cn_user_id, cn_user_name,cn_user_password,cn_user_token,cn_user_desc
-        FROM cn_user WHERE cn_user_name=#{userName} AND cn_user_password=#{passWord}
+        FROM cn_user WHERE cn_user_name=#{userName}
     </select>
 </mapper>

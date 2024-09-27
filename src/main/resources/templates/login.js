@@ -19,12 +19,16 @@ $(function(){
             data:{"userName":userName,"passWord":passWord},
             dataType:"json",
             success:function(data){
-                alert(data.objectData.cnUserName);
+                var statusCode=data.statusCode;
+                if(statusCode==200){
+                    window.location.href="edit.html";
+                }else{
+                    alert(data.msg);
+                }
             },
-            error:function () {
-
+            error:function (error) {
+                alert("System error. Bitte ein Moment wieder probieren");
             }
-
         })
     });
 });

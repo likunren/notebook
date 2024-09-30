@@ -24,4 +24,16 @@ public class controller {
         String passWord=request.getParameter("passWord");
         return cnUserService.findByUser(userName,passWord);
     }
+    @RequestMapping("/addUser")
+    @ResponseBody
+    public ResultData<CnUser> addUser(HttpServletRequest request,HttpServletResponse response){
+        String userName=request.getParameter("userName");
+        String nickName=request.getParameter("nickName");
+        String passWord=request.getParameter("passWord");
+        CnUser cnUser=new CnUser();
+        cnUser.setCnUserName(userName);
+        cnUser.setCnUserDesc(nickName);
+        cnUser.setCnUserPassword(passWord);
+        return cnUserService.registUser(cnUser);
+    }
 }

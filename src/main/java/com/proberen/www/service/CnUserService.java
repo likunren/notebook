@@ -5,4 +5,5 @@ import com.proberen.www.util.ResultData;
 
 public interface CnUserService {
     public ResultData<CnUser> findByUser(String userName,String passWord);
+    public ResultData<CnUser> registUser(CnUser cnUser);
 }

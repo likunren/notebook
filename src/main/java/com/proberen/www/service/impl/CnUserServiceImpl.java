@@ -7,6 +7,7 @@ import com.proberen.www.util.ResultData;
 import com.proberen.www.util.Status;
 import com.proberen.www.util.Utils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -17,13 +18,13 @@ import java.util.Map;
 public class CnUserServiceImpl implements CnUserService {
     @Resource(name="cnUserDao")
     private CnUserDaoMapper cnUserDaoMapper;
-    @Override
+    @Transactional
     public ResultData<CnUser> findByUser(String userName,String passWord)
     {
         ResultData<CnUser> resultData=new ResultData<CnUser>();
         Map<String,String> params=new HashMap<String,String>();
         params.put("userName",userName);
-        params.put("passWord",passWord);
+        passWord=Utils.get_MD5(passWord);
         CnUser cnUser=cnUserDaoMapper.findByName(userName);
         if(null!=cnUser){
             String pwd=cnUser.getCnUserPassword();
@@ -42,14 +43,24 @@ public class CnUserServiceImpl implements CnUserService {
         return resultData;
     }
 
-    @Override
+   @Transactional
     public ResultData<CnUser> registUser(CnUser cnUser) {
         ResultData<CnUser> resultData=new ResultData<CnUser>();
-        cnUser.setCnUserId(Utils.get_UUID());
-        cnUserDaoMapper.addUser(cnUser);
-        resultData.setStatusCode(Status.SUCCESS);
-        resultData.setMsg("Anmeldung ist erfolgreich");
-        resultData.setObjectData(null);
+        //is User existiert
+        CnUser cnUserTemp=cnUserDaoMapper.findByName(cnUser.getCnUserName());
+        if(null==cnUserTemp) {
+            cnUser.setCnUserId(Utils.get_UUID());
+            cnUser.setCnUserPassword(Utils.get_MD5(cnUser.getCnUserPassword()));
+            cnUserDaoMapper.addUser(cnUser);
+            resultData.setStatusCode(Status.SUCCESS);
+            resultData.setMsg("Anmeldung ist erfolgreich.");
+            resultData.setObjectData(null);
+        }else{
+            resultData.setStatusCode(Status.USER_EXIST);
+            resultData.setMsg("User ist shon existiert.");
+            resultData.setObjectData(null);
+        }
         return resultData;
     }
+
 }

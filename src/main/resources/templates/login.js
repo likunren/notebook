@@ -53,11 +53,16 @@ $(function(){
             type:"post",
             data:{"userName":userName,"nickName":nickName,"passWord":passWord},
             dataType:"json",
-            success:function () {
-
+            success:function (data) {
+                var statusCode = data.statusCode;
+                if (statusCode == 200) {
+                    $("#back").click();
+                } else if(statusCode == 203){
+                    alert(data.msg)
+                }
             },
             error:function () {
-
+                alert("System error. Bitte ein Moment wieder probieren");
             }
         })
     })

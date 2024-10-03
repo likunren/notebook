@@ -48,4 +48,15 @@ public class CnUser implements Serializable {
     public void setCnUserDesc(String cnUserDesc) {
         this.cnUserDesc = cnUserDesc;
     }
+
+    @Override
+    public String toString() {
+        return "CnUser{" +
+                "cnUserId='" + cnUserId + '\'' +
+                ", cnUserName='" + cnUserName + '\'' +
+                ", cnUserPassword='" + cnUserPassword + '\'' +
+                ", cnUserToken='" + cnUserToken + '\'' +
+                ", cnUserDesc='" + cnUserDesc + '\'' +
+                '}';
+    }
 }

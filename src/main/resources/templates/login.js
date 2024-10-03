@@ -33,14 +33,33 @@ $(function(){
             }
         })
     });
+    $("#regist_password").blur(function(){
+        var pwd=$("#regist_password").val().trim();
+        var bool=pwdformat(pwd);
+        $('#warning_2').hide();
+        if(!bool){
+            $("#regist_password").val("");
+            $("#regist_password").focus();
+            $("#warning_2").attr({style:"right:85px"});
+            $('#warning_2').show();
+        }
+    })
     $("#regist_button").click(function () {
         var userName=$("#regist_username").val().trim();
         var nickName=$("#nickname").val().trim();
         var passWord=$("#regist_password").val().trim();
         var final_password=$("#final_password").val().trim();
+        $('#warning_2').hide();
+        $("#warning_3").hide();
+        $("#warning_1").hide();
         if(isEmpty(userName)){
             $("#warning_1").attr({style:"right:85px"});
             $("#warning_1").show();
+            return;
+        }
+        if(isEmpty(passWord) && isEmpty(final_password)){
+            $("#warning_2").attr({style:"right:85px"});
+            $('#warning_2').show();
             return;
         }
         if(!compareTo(passWord,final_password)){
@@ -59,6 +78,11 @@ $(function(){
                     $("#back").click();
                 } else if(statusCode == 203){
                     alert(data.msg)
+                    $("#warning_1").attr({style:"right:85px"});
+                    $("#warning_1").show();
+                    $("#regist_username").val("");
+                    $("#regist_username").focus();
+
                 }
             },
             error:function () {

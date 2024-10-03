@@ -1,6 +1,10 @@
 function isEmpty(str){
     return str.trim()==""?true:false;
 }
+function pwdformat(str){
+    var regExp=new RegExp("^[a-z]{1}\\w+$","gi");
+    return regExp.test(str);
+}
 //获取指定名称的cookie的值
 function getCookie(objName) {
     //得到分割的cookie名值对
@@ -47,3 +51,4 @@ function delCookie(name) {
         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
     }
 }
+

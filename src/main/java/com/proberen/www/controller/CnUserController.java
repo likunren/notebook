@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class controller {
+public class CnUserController {
     @Resource(name="cnUserServiceImpl")
     private CnUserService cnUserService;
     @RequestMapping("/login")

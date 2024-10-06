@@ -37,7 +37,7 @@ spring:
       quiet-period: 1000
 
 mybatis:
-  mapper-locations: classpath:/mappers/CnUserMappper.xml
+  mapper-locations: classpath:/mappers/*.xml
   type-aliases-package: com.proberen.www.entity
   configuration:
     map-underscore-to-camel-case: true

@@ -9,6 +9,9 @@ public class Status {
     public final static int USER_NAME_ERROR=202;
     /**User shon Exist*/
     public final static int USER_EXIST=203;
+    /**notbook ist leer */
+    public final static int NOTE_BOOK_EMPTY=208;
     /**finden Fali**/
     public final static int FAIL=300;
+
 }

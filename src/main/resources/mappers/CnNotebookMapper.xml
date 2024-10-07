@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.proberen.www.dao.CnNotebookDaoMapper">
+    <select id="findbooksByUserId" parameterType="string" resultMap="BaseResultMap">
+        SELECT cn_notebook_id,cn_user_id,cn_notebook_type_id, cn_notebook_name,cn_notebook_desc,cn_notebook_createtime
+        FROM cn_notebook
+        WHERE cn_user_id=#{userId}
+        ORDER BY cn_notebook_createtime DESC
+    </select>
+    <resultMap id="BaseResultMap" type="com.proberen.www.entity.CnNotebook">
+            <id property="cnNotebookId" column="cn_notebook_id" jdbcType="VARCHAR"/>
+            <result property="cnUserId" column="cn_user_id" jdbcType="VARCHAR"/>
+            <result property="cnNotebookTypeId" column="cn_notebook_type_id" jdbcType="VARCHAR"/>
+            <result property="cnNotebookName" column="cn_notebook_name" jdbcType="VARCHAR"/>
+            <result property="cnNotebookDesc" column="cn_notebook_desc" jdbcType="VARCHAR"/>
+            <result property="cnNotebookCreatetime" column="cn_notebook_createtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+</mapper>

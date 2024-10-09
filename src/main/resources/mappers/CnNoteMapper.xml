@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.proberen.www.dao.CnNoteDaoMapper">
+<select id="findNoteByBookId" parameterType="string" resultMap="BaseResultMap">
+    SELECT  cn_note_id,cn_notebook_id,cn_user_id,cn_note_status_id,cn_note_type_id,cn_note_title,cn_note_body,cn_note_create_time,cn_note_last_modify_time
+    FROM cn_note
+    WHERE cn_notebook_id=#{cnNotebook}
+    AND cn_note_status_id='1'
+</select>
+    <resultMap id="BaseResultMap" type="com.proberen.www.entity.CnNote">
+            <id property="cnNoteId" column="cn_note_id" jdbcType="VARCHAR"/>
+            <result property="cnNotebookId" column="cn_notebook_id" jdbcType="VARCHAR"/>
+            <result property="cnUserId" column="cn_user_id" jdbcType="VARCHAR"/>
+            <result property="cnNoteStatusId" column="cn_note_status_id" jdbcType="VARCHAR"/>
+            <result property="cnNoteTypeId" column="cn_note_type_id" jdbcType="VARCHAR"/>
+            <result property="cnNoteTitle" column="cn_note_title" jdbcType="VARCHAR"/>
+            <result property="cnNoteBody" column="cn_note_body" jdbcType="VARCHAR"/>
+            <result property="cnNoteCreateTime" column="cn_note_create_time" jdbcType="BIGINT"/>
+            <result property="cnNoteLastModifyTime" column="cn_note_last_modify_time" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        cn_note_id,cn_notebook_id,cn_user_id,
+        cn_note_status_id,cn_note_type_id,cn_note_title,
+        cn_note_body,cn_note_create_time,cn_note_last_modify_time
+    </sql>
+</mapper>

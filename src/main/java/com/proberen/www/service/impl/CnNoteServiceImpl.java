@@ -6,6 +6,7 @@ import com.proberen.www.service.CnNoteService;
 import com.proberen.www.util.ResultData;
 import com.proberen.www.util.Status;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 public class CnNoteServiceImpl implements CnNoteService{
     @Resource(name="cnNoteDao")
     private CnNoteDaoMapper cnNoteDao;
-    @Override
+    @Transactional
     public ResultData<List<CnNote>> findBookNotes(String bookId) {
         ResultData<List<CnNote>> resultData=new  ResultData<List<CnNote>>();
         List<CnNote> cnNotes=cnNoteDao.findNoteByBookId(bookId);
@@ -32,7 +33,7 @@ public class CnNoteServiceImpl implements CnNoteService{
         return resultData;
     }
 
-    @Override
+    @Transactional
     public ResultData<CnNote> loadNote(String noteId) {
         ResultData<CnNote> resultData=new ResultData<CnNote>();
         CnNote cnNote=cnNoteDao.findNoteByNoteId(noteId);

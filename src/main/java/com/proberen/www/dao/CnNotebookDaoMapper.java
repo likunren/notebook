@@ -8,5 +8,4 @@ import java.util.List;
 @Repository("cnNoteBookDao")
 public interface CnNotebookDaoMapper{
     public List<CnNotebook> findbooksByUserId(String userId);
-
 }

@@ -8,5 +8,6 @@ import java.util.List;
 @Repository("cnNoteDao")
 public interface CnNoteDaoMapper {
     public List<CnNote> findNoteByBookId(String bookId);
+    public CnNote findNoteByNoteId(String noteId);
 
 }

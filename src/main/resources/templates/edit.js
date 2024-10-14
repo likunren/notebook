@@ -31,12 +31,32 @@ $(function(){
                          '</dl>'+
                       '</div>'+
                 '</li>';
-                var $li=$(sli)
-                $li.data("bookId",books[i].cn_note_id);
-                obj.append($li);
+                obj.append($(sli).data("noteId",books[i].cnNoteId));
             }
         }
     }
+    $("#bookId ul").on("click","li",function(){
+        var noteId=$(this).data("noteId");
+        $(this).siblings().children("a").removeClass("checked");
+        $(this).children("a").addClass("checked");
+        $.ajax({
+            url:"note/loadNote",
+            data:{"noteId":noteId},
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                var note=data.objectData;
+                var status=data.statusCode;
+                if(status==200) {
+                    $("#input_note_title").val(note.cnNoteTitle);
+                    um.setContent(note.cnNoteBody);
+                }
+             },
+            error:function(error){
+                alert("System error. Bitte ein Moment wieder probieren");
+             }
+        });
+    })
     $("#userNotiz ul").on("click","li",function(){
         var bookId=$(this).data("noteId");
         $.ajax({

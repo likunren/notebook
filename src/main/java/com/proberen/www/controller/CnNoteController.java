@@ -24,5 +24,12 @@ public class CnNoteController {
         ResultData<List<CnNote>> resultData=cnNoteService.findBookNotes(bookId);
         return resultData;
     }
+    @RequestMapping("/loadNote")
+    @ResponseBody
+    public ResultData<CnNote> loadNote(HttpServletRequest request,HttpServletResponse response){
+        String noteId=request.getParameter("noteId");
+        ResultData<CnNote> resultData=cnNoteService.loadNote(noteId);
+        return resultData;
+    }
 }
 

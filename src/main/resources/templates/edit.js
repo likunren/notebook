@@ -15,6 +15,8 @@ $(function(){
     }
     function addBook(obj,books){
         obj.empty();
+        $("#input_note_title").val("");
+        um.setContent("");
         if(books.length>0){
             for (var i = 0; i < books.length; i++) {
                 var sli='<li class="online">'+
@@ -35,6 +37,35 @@ $(function(){
             }
         }
     }
+    $("#save_note").click(function(){
+        var $noteTitle=$("#bookId ul li a.checked");
+        var noteId= $noteTitle.parent().data("noteId");
+        if(noteId==undefined){
+            alert("Sie haben eine Note,die Sie speichern möchten, nicht ausgewählt.");
+            return;
+        }
+        var noteTitle= $("#input_note_title").val();
+        var noteBody=um.getContent();
+        $.ajax({
+            url:"note/update",
+            data:{"noteId":noteId,"noteTitle":noteTitle,"noteBody":noteBody},
+            dataType:"json",
+            type:"post",
+            success:function(data){
+                var status=data.statusCode;
+                var noteTitle=data.objectData;
+                if(status==200) {
+                    $noteTitle.html( '<i class="fa fa-file-text-o" title="online" rel="tooltip-bottom"></i>'+
+                        noteTitle +
+                        '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>');
+                    alert(data.msg);
+                }
+            },
+            error:function(error){
+                alert("System error. Bitte ein Moment wieder probieren");
+            }
+        })
+    })
     $("#bookId ul").on("click","li",function(){
         var noteId=$(this).data("noteId");
         $(this).siblings().children("a").removeClass("checked");

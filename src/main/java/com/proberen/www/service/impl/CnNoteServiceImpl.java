@@ -42,4 +42,14 @@ public class CnNoteServiceImpl implements CnNoteService{
         resultData.setObjectData(cnNote);
         return resultData;
     }
+
+    @Transactional
+    public ResultData<String> updateNote(CnNote cnNote) {
+        ResultData<String> resultData=new ResultData();
+        cnNoteDao.modifyNote(cnNote);
+        resultData.setStatusCode(Status.SUCCESS);
+        resultData.setObjectData(cnNote.getCnNoteTitle());
+        resultData.setMsg("es wurde Erfolg erneuert");
+        return resultData;
+    }
 }

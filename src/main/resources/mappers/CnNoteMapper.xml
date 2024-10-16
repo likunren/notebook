@@ -14,6 +14,11 @@
         FROM cn_note
         WHERE cn_note_id=#{NoteId}
     </select>
+    <update id="modifyNote" parameterType="com.proberen.www.entity.CnNote">
+        UPDATE cn_note
+        SET cn_note_title=#{cnNoteTitle},cn_note_body=#{cnNoteBody}
+        WHERE cn_note_id=#{cnNoteId}
+    </update>
     <resultMap id="BaseResultMap" type="com.proberen.www.entity.CnNote">
             <id property="cnNoteId" column="cn_note_id" jdbcType="VARCHAR"/>
             <result property="cnNotebookId" column="cn_notebook_id" jdbcType="VARCHAR"/>

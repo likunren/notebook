@@ -31,5 +31,18 @@ public class CnNoteController {
         ResultData<CnNote> resultData=cnNoteService.loadNote(noteId);
         return resultData;
     }
+    @RequestMapping("/update")
+    @ResponseBody
+    public ResultData<String> updateNote(HttpServletRequest request,HttpServletResponse response){
+        String noteId=request.getParameter("noteId");
+        String noteTitle=request.getParameter("noteTitle");
+        String noteBody=request.getParameter("noteBody");
+        CnNote cnNote=new CnNote();
+        cnNote.setCnNoteId(noteId);
+        cnNote.setCnNoteTitle(noteTitle);
+        cnNote.setCnNoteBody(noteBody);
+        ResultData<String> resultData=cnNoteService.updateNote(cnNote);
+        return resultData;
+    }
 }
 

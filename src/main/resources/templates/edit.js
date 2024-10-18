@@ -37,6 +37,14 @@ $(function(){
             }
         }
     }
+    $("#can").on("click","div.modal-header .close",function(){
+        $('#can').empty();
+        $('.opacity_bg').hide();
+    })
+    $("#add_notebook").click(function(){
+        $('#can').load('./alert/alert_note.html');
+        $('.opacity_bg').show();
+    });
     $("#save_note").click(function(){
         var $noteTitle=$("#bookId ul li a.checked");
         var noteId= $noteTitle.parent().data("noteId");
@@ -59,6 +67,8 @@ $(function(){
                         noteTitle +
                         '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>');
                     alert(data.msg);
+                }else{
+                    alert("Die Daten sind nicht elfolgreich gespeichert.")
                 }
             },
             error:function(error){

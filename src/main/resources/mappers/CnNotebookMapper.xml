@@ -8,6 +8,15 @@
         WHERE cn_user_id=#{userId}
         ORDER BY cn_notebook_createtime DESC
     </select>
+    <select id="findBooksByName" parameterType="map" resultMap="BaseResultMap">
+        SELECT cn_notebook_id,cn_user_id,cn_notebook_type_id, cn_notebook_name,cn_notebook_desc,cn_notebook_createtime
+        FROM cn_notebook
+        WHERE cn_notebook_name=#{cnNotebook} and cn_user_id=#{userId}
+    </select>
+    <insert id="insertNoteBook" parameterType="com.proberen.www.entity.CnNotebook">
+        INSERT INTO cn_notebook(cn_notebook_id, cn_user_id,cn_notebook_name,cn_notebook_type_id,cn_notebook_createtime)
+        VALUES (#{cnNotebookId},#{cnUserId},#{cnNotebookName},#{cnNotebookTypeId},#{cnNotebookCreatetime})
+    </insert>
     <resultMap id="BaseResultMap" type="com.proberen.www.entity.CnNotebook">
             <id property="cnNotebookId" column="cn_notebook_id" jdbcType="VARCHAR"/>
             <result property="cnUserId" column="cn_user_id" jdbcType="VARCHAR"/>

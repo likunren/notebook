@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CnNotebookService {
     public ResultData<List<CnNotebook>> loadUserBooks(String userId);
+    public ResultData<CnNotebook> createNoteBook(String userId,String noteBookName);
 }

@@ -7,6 +7,8 @@ public class Status {
     public final static int PASS_WORD_ERROR=201;
     /**UserName error*/
     public final static int USER_NAME_ERROR=202;
+    /** book Name shon Exist*/
+    public final static int NOTE_BOOK_NAME=205;
     /**User shon Exist*/
     public final static int USER_EXIST=203;
     /**notbook ist leer */

@@ -25,4 +25,12 @@ public class CnNoteBookController {
         ResultData<List<CnNotebook>> resultDate=cnNotebookService.loadUserBooks(userId);
         return resultDate;
     }
+    @RequestMapping("/add")
+    @ResponseBody
+    public ResultData<CnNotebook> addNoteBook(HttpServletRequest request, HttpServletResponse response){
+        String userId=request.getParameter("cnUserId");
+        String noteBookName=request.getParameter("noteBookName");
+        ResultData<CnNotebook> resultDate=cnNotebookService.createNoteBook(userId,noteBookName);
+        return resultDate;
+    }
 }

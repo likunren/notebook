@@ -41,9 +41,45 @@ $(function(){
         $('#can').empty();
         $('.opacity_bg').hide();
     })
+    $("#can").on("click",".cancle",function(){
+        $('#can').empty();
+        $('.opacity_bg').hide();
+    });
+
     $("#add_notebook").click(function(){
         $('#can').load('./alert/alert_note.html');
         $('.opacity_bg').show();
+    });
+    $("#can").on("click",".sure",function(){
+       var noteBookName=$("#input_note").val();
+       var cnUserId=getCookie("userId");
+       $.ajax({
+           url:"book/add",
+           data:{"cnUserId":cnUserId,"noteBookName":noteBookName},
+           dataType:"json",
+           type:"post",
+           success:function(data){
+                var statusCode=data.statusCode;
+                var noteBookObj=data.objectData;
+                if(statusCode==200) {
+                    $('#can').empty();
+                    $('.opacity_bg').hide();
+                    var obj = $("#userNotiz .contacts-list");
+                    var sli = '<li class="online"><a href="javascript:;"> ' +
+                        '<i class="fa fa-book" title="online" rel="tooltip-bottom"></i>' +
+                        noteBookObj.cnNotebookName +
+                        '</a> </li>';
+                    var $li = $(sli)
+                    $li.data("noteId", noteBookObj.cnNotebookId)
+                    obj.prepend($li);
+                }else {
+                    alert(data.msg);
+                }
+           },
+           error:function(error){
+               alert("Die Daten sind nicht elfolgreich gespeichert.")
+           }
+       })
     });
     $("#save_note").click(function(){
         var $noteTitle=$("#bookId ul li a.checked");

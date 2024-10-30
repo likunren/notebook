@@ -5,6 +5,7 @@ import com.proberen.www.entity.CnNotebook;
 import com.proberen.www.service.CnNoteService;
 import com.proberen.www.util.ResultData;
 import com.proberen.www.util.Status;
+import com.proberen.www.util.Utils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,6 +51,23 @@ public class CnNoteServiceImpl implements CnNoteService{
         resultData.setStatusCode(Status.SUCCESS);
         resultData.setObjectData(cnNote.getCnNoteTitle());
         resultData.setMsg("es wurde Erfolg erneuert");
+        return resultData;
+    }
+
+    @Transactional
+    public ResultData<CnNote> addNote(CnNote cnNote) {
+        ResultData<CnNote> resultData=new ResultData<CnNote>();
+        cnNote.setCnNoteId(Utils.get_UUID());
+        cnNote.setCnNoteStatusId("1");
+        cnNote.setCnNoteTypeId("1");
+        cnNote.setCnNoteBody("");
+        Long createTime=System.currentTimeMillis();
+        cnNote.setCnNoteCreateTime(createTime);
+        cnNote.setCnNoteLastModifyTime(createTime);
+        cnNoteDao.saveNote(cnNote);
+        resultData.setStatusCode(Status.SUCCESS);
+        resultData.setObjectData(cnNote);
+        resultData.setMsg("es wurde Erfolg erstellt");
         return resultData;
     }
 }

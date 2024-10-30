@@ -8,6 +8,7 @@
         FROM cn_note
         WHERE cn_notebook_id=#{cnNotebook}
         AND cn_note_status_id='1'
+        ORDER BY cn_note_last_modify_time DESC
     </select>
     <select id="findNoteByNoteId" parameterType="string" resultMap="BaseResultMap">
         SELECT cn_note_id,cn_notebook_id,cn_user_id,cn_note_status_id,cn_note_type_id,cn_note_title,cn_note_body,cn_note_create_time,cn_note_last_modify_time
@@ -19,6 +20,10 @@
         SET cn_note_title=#{cnNoteTitle},cn_note_body=#{cnNoteBody}
         WHERE cn_note_id=#{cnNoteId}
     </update>
+    <insert id="saveNote" parameterType="com.proberen.www.entity.CnNote">
+        INSERT INTO cn_note(cn_note_id,cn_notebook_id,cn_user_id,cn_note_status_id,cn_note_type_id,cn_note_title,cn_note_body,cn_note_create_time,cn_note_last_modify_time)
+        VALUES (#{cnNoteId},#{cnNotebookId},#{cnUserId},#{cnNoteStatusId},#{cnNoteTypeId},#{cnNoteTitle},#{cnNoteBody},#{cnNoteCreateTime},#{cnNoteLastModifyTime})
+    </insert>
     <resultMap id="BaseResultMap" type="com.proberen.www.entity.CnNote">
             <id property="cnNoteId" column="cn_note_id" jdbcType="VARCHAR"/>
             <result property="cnNotebookId" column="cn_notebook_id" jdbcType="VARCHAR"/>

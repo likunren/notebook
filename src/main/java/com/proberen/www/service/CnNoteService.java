@@ -10,4 +10,5 @@ public interface CnNoteService {
     public ResultData<List<CnNote>> findBookNotes(String bookId);
     public ResultData<CnNote> loadNote(String noteId);
     public ResultData<String> updateNote(CnNote cnNote);
+    public ResultData<CnNote> addNote(CnNote cnNote);
  }

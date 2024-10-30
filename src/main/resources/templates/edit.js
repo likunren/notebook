@@ -8,7 +8,7 @@ $(function(){
                     books[i].cnNotebookName +
                     '</a> </li>';
                 var $li=$(sli)
-                $li.data("noteId",books[i].cnNotebookId)
+                $li.data("bookId",books[i].cnNotebookId)
                 obj.append($li);
             }
         }
@@ -45,13 +45,69 @@ $(function(){
         $('#can').empty();
         $('.opacity_bg').hide();
     });
+    $("#add_note").click(function(){
+        $("#can").load('./alert/alert_notebook.html');
+        $('.opacity_bg').show();
 
+    });
     $("#add_notebook").click(function(){
         $('#can').load('./alert/alert_note.html');
         $('.opacity_bg').show();
     });
-    $("#can").on("click",".sure",function(){
+    $("#can").on("click","#saveNote",function(){
+        var $bookObj=$("#userNotiz ul li a.checked");
+        var cnNotebookId= $bookObj.parent().data("bookId");
+        var cnUserId=getCookie("userId")
+        var cnNoteTitle=$("#input_notebook").val();
+        if(isEmpty(cnNoteTitle)){
+            alert("Bitte geben Sie Notename ein?");
+            $("#input_notebook").focus();
+            return;
+        }
+       $.ajax({
+           url:"note/addNote",
+           data:{"cnNotebookId":cnNotebookId,"cnUserId":cnUserId,"cnNoteTitle":cnNoteTitle},
+           dataType:"json",
+           type:"post",
+           success:function(data){
+               var statusCode=data.statusCode;
+               var noteObj=data.objectData;
+               if(statusCode==200){
+                   $('#can').empty();
+                   $('.opacity_bg').hide();
+                   var obj = $("#bookId .contacts-list");
+                   var sli = '<li class="online">'+
+                                 '<a >'+
+                                 '<i class="fa fa-file-text-o" title="online" rel="tooltip-bottom"></i>'+
+                                    noteObj.cnNoteTitle +
+                                 '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>'
+                                 '</a>'+
+                                 '<div class="note_menu" tabindex="-1">'+
+                                 '<dl>'+
+                                 '<dt><button type="button" class="btn btn-default btn-xs btn_move" title="Bewegen..."><i class="fa fa-random"></i></button></dt>'+
+                                 '<dt><button type="button" class="btn btn-default btn-xs btn_share" title="Teilen"><i class="fa fa-sitemap"></i></button></dt>' +
+                                 '<dt><button type="button" class="btn btn-default btn-xs btn_delete" title="Streichen"><i class="fa fa-times"></i></button></dt>'+
+                                 '</dl>'+
+                                 '</div>'+
+                              '</li>';
+                   var $li = $(sli)
+                   $li.data("noteId", noteObj.cnNoteId)
+                   obj.prepend($li);
+               }
+           },
+           error:function(error){
+               alert("Die Daten sind nicht elfolgreich gespeichert.")
+           }
+
+       })
+    })
+    $("#can").on("click","#saveBook",function(){
        var noteBookName=$("#input_note").val();
+        if(isEmpty(noteBookName)){
+            alert("Bitte geben Sie Notebooksname ein?");
+            $("#input_note").focus();
+            return;
+        }
        var cnUserId=getCookie("userId");
        $.ajax({
            url:"book/add",
@@ -70,14 +126,14 @@ $(function(){
                         noteBookObj.cnNotebookName +
                         '</a> </li>';
                     var $li = $(sli)
-                    $li.data("noteId", noteBookObj.cnNotebookId)
+                    $li.data("bookId", noteBookObj.cnNotebookId)
                     obj.prepend($li);
                 }else {
                     alert(data.msg);
                 }
            },
            error:function(error){
-               alert("Die Daten sind nicht elfolgreich gespeichert.")
+               alert("Die Daten sind nicht elfolgreich gespeichert.");
            }
        })
     });
@@ -135,7 +191,9 @@ $(function(){
         });
     })
     $("#userNotiz ul").on("click","li",function(){
-        var bookId=$(this).data("noteId");
+        var bookId=$(this).data("bookId");
+        $(this).siblings().children("a").removeClass("checked");
+        $(this).children("a").addClass("checked");
         $.ajax({
             url:"note/loadNotes",
             data:{"bookId":bookId},

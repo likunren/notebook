@@ -10,5 +10,6 @@ public interface CnNoteDaoMapper {
     public List<CnNote> findNoteByBookId(String bookId);
     public CnNote findNoteByNoteId(String noteId);
     public void modifyNote(CnNote cnNote);
+    public void saveNote(CnNote cnNote);
 
 }

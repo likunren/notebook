@@ -1,7 +1,6 @@
 package com.proberen.www.dao;
 
 import com.proberen.www.entity.CnNote;
-import com.proberen.www.entity.CnNotebook;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,5 +10,6 @@ public interface CnNoteDaoMapper {
     public CnNote findNoteByNoteId(String noteId);
     public void modifyNote(CnNote cnNote);
     public void saveNote(CnNote cnNote);
+    public void deleteNote(String noteId);
 
 }

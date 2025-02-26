@@ -11,4 +11,5 @@ public interface CnNoteService {
     public ResultData<CnNote> loadNote(String noteId);
     public ResultData<String> updateNote(CnNote cnNote);
     public ResultData<CnNote> addNote(CnNote cnNote);
+    public ResultData<String> deleteNote(String noteId);
  }

@@ -23,7 +23,7 @@ $(function(){
                     '<a >'+
                     '<i class="fa fa-file-text-o" title="online" rel="tooltip-bottom"></i>'+
                     books[i].cnNoteTitle +
-                    '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>'
+                    '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>'+
                     '</a>'+
                     '<div class="note_menu" tabindex="-1">'+
                         '<dl>'+
@@ -80,7 +80,7 @@ $(function(){
                                  '<a >'+
                                  '<i class="fa fa-file-text-o" title="online" rel="tooltip-bottom"></i>'+
                                     noteObj.cnNoteTitle +
-                                 '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>'
+                                 '<button type="button" class="btn btn-default btn-xs btn_position btn_slide_down"><i class="fa fa-chevron-down"></i></button>'+
                                  '</a>'+
                                  '<div class="note_menu" tabindex="-1">'+
                                  '<dl>'+
@@ -100,6 +100,28 @@ $(function(){
            }
 
        })
+    })
+    $("#can").on("click","div .sure",function(){
+        var $bookId=$("#bookId ul li a.checked");
+        var noteId=$bookId.parents("li").data("noteId");
+        $.ajax({
+           url:"note/delNote",
+           data:{"noteId":noteId},
+           dataType:"json",
+           type:"post",
+           success:function(data){
+               var statusCode=data.statusCode;
+               var msg=data.objectData;
+               if(statusCode==100){
+                   alert(msg);
+               }
+           },
+            erroe:function(error){
+                alert("Die Daten sind nicht elfolgreich entfernen.")
+            }
+
+
+        });
     })
     $("#can").on("click","#saveBook",function(){
        var noteBookName=$("#input_note").val();
@@ -168,6 +190,39 @@ $(function(){
             }
         })
     })
+    $("body").click(function(){
+      $("#bookId ul li div.note_menu").hide();
+    });
+    $("#bookId ul").on("click","li .btn_slide_down",function(e){
+        $(this).parents("li").click();
+        $(this).parents("li").siblings().children(".note_menu").hide();
+        $(this).parents("li").children(".note_menu").slideDown(1000);
+        e.stopPropagation();
+    });
+    $("#bookId ul").on("click","li .btn_delete",function(){
+        $('#can').load('./alert/alert_delete_note.html');
+    });
+    $("#bookId ul").on("click","li .btn_share",function(){
+       var noteId=$(this).parents("li").data("noteId");
+       var $obj=$(this).parents("li").children("a").find(".btn_slide_down");
+       $.ajax({
+           url:"share/add",
+           data:{"noteId":noteId},
+           dataType:"json",
+           type:"post",
+           success:function(data){
+               var note=data.objectData;
+               var status=data.statusCode;
+               if(status==200){
+                   $obj.before("&nbsp;&nbsp;<i class='fa fa-sitemap'></i>");
+                   alert(data.msg);
+               }
+           },
+           error:function (error) {
+               alert("System error. Bitte ein Moment wieder probieren");
+           }
+       });
+    })
     $("#bookId ul").on("click","li",function(){
         var noteId=$(this).data("noteId");
         $(this).siblings().children("a").removeClass("checked");
@@ -231,6 +286,7 @@ $(function(){
                         obj.empty();
                    }else{
                        var books=data.objectData;
+                       $("#cnUserName").text(getCookie("cnUserName"));
                        addNote(obj,books);
                        $("#userNotiz ul li:first").click();
                    }

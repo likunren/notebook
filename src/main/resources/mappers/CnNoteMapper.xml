@@ -20,6 +20,11 @@
         SET cn_note_title=#{cnNoteTitle},cn_note_body=#{cnNoteBody}
         WHERE cn_note_id=#{cnNoteId}
     </update>
+    <update id="deleteNote" parameterType="string">
+        UPDATE cn_note
+        set cn_note_status_id='2'
+        WHERE cn_note_id=#{cnNoteId}
+    </update>
     <insert id="saveNote" parameterType="com.proberen.www.entity.CnNote">
         INSERT INTO cn_note(cn_note_id,cn_notebook_id,cn_user_id,cn_note_status_id,cn_note_type_id,cn_note_title,cn_note_body,cn_note_create_time,cn_note_last_modify_time)
         VALUES (#{cnNoteId},#{cnNotebookId},#{cnUserId},#{cnNoteStatusId},#{cnNoteTypeId},#{cnNoteTitle},#{cnNoteBody},#{cnNoteCreateTime},#{cnNoteLastModifyTime})

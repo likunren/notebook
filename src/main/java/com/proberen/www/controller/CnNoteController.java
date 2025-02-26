@@ -3,7 +3,6 @@ package com.proberen.www.controller;
 import com.proberen.www.entity.CnNote;
 import com.proberen.www.service.CnNoteService;
 import com.proberen.www.util.ResultData;
-import com.proberen.www.util.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.transform.Result;
 import java.util.List;
 
 @Controller
@@ -59,7 +57,12 @@ public class CnNoteController {
         ResultData<CnNote> resultData=cnNoteService.addNote(cnNote);
         return resultData;
     }
-
-
+    @RequestMapping("/delNote")
+    @ResponseBody
+    public ResultData<String> removeNotebook(HttpServletRequest request, HttpServletResponse response){
+        String noteId=request.getParameter("noteId");
+        ResultData<String> resultData=cnNoteService.deleteNote(noteId);
+        return resultData;
+    }
 }
 

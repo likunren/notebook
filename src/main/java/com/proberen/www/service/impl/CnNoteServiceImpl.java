@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
-*
-*/
 @Service
 public class CnNoteServiceImpl implements CnNoteService{
     @Resource(name="cnNoteDao")
@@ -68,6 +65,16 @@ public class CnNoteServiceImpl implements CnNoteService{
         resultData.setStatusCode(Status.SUCCESS);
         resultData.setObjectData(cnNote);
         resultData.setMsg("es wurde Erfolg erstellt");
+        return resultData;
+    }
+
+    @Transactional
+    public ResultData<String> deleteNote(String noteId) {
+        ResultData<String> resultData=new ResultData();
+        cnNoteDao.deleteNote(noteId);
+        resultData.setStatusCode(Status.SUCCESS);
+        resultData.setObjectData("Success");
+        resultData.setMsg("es ist erfolgreich gestrichen");
         return resultData;
     }
 }

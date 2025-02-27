@@ -73,7 +73,7 @@ public class CnNoteServiceImpl implements CnNoteService{
         ResultData<String> resultData=new ResultData();
         cnNoteDao.deleteNote(noteId);
         resultData.setStatusCode(Status.SUCCESS);
-        resultData.setObjectData("Success");
+        resultData.setObjectData("success");
         resultData.setMsg("es ist erfolgreich gestrichen");
         return resultData;
     }

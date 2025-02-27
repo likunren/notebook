@@ -101,7 +101,7 @@ $(function(){
 
        })
     })
-    $("#can").on("click","div .sure",function(){
+    $("#can").on("click","#delNote",function(){
         var $bookId=$("#bookId ul li a.checked");
         var noteId=$bookId.parents("li").data("noteId");
         $.ajax({
@@ -111,16 +111,16 @@ $(function(){
            type:"post",
            success:function(data){
                var statusCode=data.statusCode;
-               var msg=data.objectData;
-               if(statusCode==100){
+               var msg=data.msg;
+               if(statusCode==200){
+                   $('#can').empty();
                    alert(msg);
+                   $bookId.parents("li").remove();
                }
            },
             erroe:function(error){
                 alert("Die Daten sind nicht elfolgreich entfernen.")
             }
-
-
         });
     })
     $("#can").on("click","#saveBook",function(){

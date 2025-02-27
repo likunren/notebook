@@ -2,12 +2,20 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.proberen.www.dao.CnShareMapper">
-
+<mapper namespace="com.proberen.www.dao.CnShareDaoMapper">
+    <insert id="saveShare" parameterType="com.proberen.www.entity.CnShare">
+        INSERT INTO cn_share(cn_share_id,cn_share_title,cn_share_body,cn_note_id)
+        VALUES (#{cnShareId},#{cnShareTitle},#{cnShareBody},#{cnNoteId})
+    </insert>
     <resultMap id="BaseResultMap" type="com.proberen.www.entity.CnShare">
-            <id property="cnShareId" column="cn_share_id" jdbcType="VARCHAR"/>
-            <result property="cnShareTitle" column="cn_share_title" jdbcType="VARCHAR"/>
-            <result property="cnShareBody" column="cn_share_body" jdbcType="VARCHAR"/>
-            <result property="cnNoteId" column="cn_note_id" jdbcType="VARCHAR"/>
+        <id property="cnShareId" column="cn_share_id" jdbcType="VARCHAR"/>
+        <result property="cnShareTitle" column="cn_share_title" jdbcType="VARCHAR"/>
+        <result property="cnShareBody" column="cn_share_body" jdbcType="VARCHAR"/>
+        <result property="cnNoteId" column="cn_note_id" jdbcType="VARCHAR"/>
     </resultMap>
+    <sql id="Base_Column_List">
+        cn_share_id,cn_share_title,cn_share_body,
+        cn_note_id
+    </sql>
+    
 </mapper>

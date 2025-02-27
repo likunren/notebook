@@ -22,7 +22,9 @@ $(function(){
                 var statusCode=data.statusCode;
                 if(statusCode==200){
                     var cnUserId=data.objectData.cnUserId;
-                    addCookie("userId",cnUserId,1)
+                    var cnUserName=data.objectData.cnUserName;
+                    addCookie("userId",cnUserId,1);
+                    addCookie("cnUserName",cnUserName,1);
                     window.location.href="edit.html";
                 }else{
                     alert(data.msg);
